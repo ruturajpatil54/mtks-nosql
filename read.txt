@@ -1,0 +1,3 @@
+Added sample working voldemort cluster in folder Voldemort Configs
+mycluster is a single node cluster. Currently working.
+Place it in congfig folder in voldermort and built with 'ant' before deployment.
