@@ -1,0 +1,24 @@
+<stores>
+  <store>
+    <name>mystore</name>
+    <persistence>bdb</persistence>
+    <description>Test store</description>
+    <owners>theapurvapawar@gmail.com</owners>
+    <routing-strategy>consistent-routing</routing-strategy>
+    <routing>client</routing>
+    <replication-factor>1</replication-factor>
+    <required-reads>1</required-reads>
+    <required-writes>1</required-writes>
+    <key-serializer>
+	<type>string</type>
+	<schema-info>utf8</schema-info>
+</key-serializer>
+	        <value-serializer>
+	            <type>json</type>
+	            <schema-info version="1">[{"id":"string", "name":"string"}]</schema-info>
+	            <compression>
+			<type>gzip</type>
+		    </compression>
+	       </value-serializer>
+  </store>
+</stores>
