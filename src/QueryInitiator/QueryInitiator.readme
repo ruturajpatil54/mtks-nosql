@@ -1,0 +1,36 @@
+This branch is created for developing Query Initiator servlet.
+Feb 9:
+Step 1:
+Create a java app with following properties:
+ Input : Query String of the form "key1 key2 .. keyN"
+ Output: Generate all possible combinations of keys such that No. of keys
+   in each group is not more than Smax. Smax is predefined.
+Notes:
+  Feb 9
+	Created classes to enable set operations. The algorithm still needs to be finalized.
+	Eclipse is used therefore all the developed classes are in src/Query Initiator/src folder 
+
+  Feb 12
+  Completed Key Combination algorithm.
+  Created 3 classes:
+  Key : Holds a key as string and popularity BitSet vector.
+  KeyGroup : Extends Key class and holds set of keys as TreeSet
+  KeyCombinator : creates List of KeyGroups based on input string < "key1 k2 k3..keyN" Smax >
+                  such that all the KeyGroups represent combinations of key1 to KeyN taken S at a time where
+                  S varies from 2 to Smax.
+  Math  : for custom math operations. Say calculat nCr
+  
+	
+Step 2:
+Create a servlet that runs above java app.
+
+Step 3:
+Fire query on Voldemort server and write/disply unprocessed result
+
+Step 4:
+Intersect URLs in the result sets. Fetch header/description.
+Sort URLs in ascending order of their popularity.
+Return result page to client.
+
+Step 5:
+Add key popularity updation in Step 4
