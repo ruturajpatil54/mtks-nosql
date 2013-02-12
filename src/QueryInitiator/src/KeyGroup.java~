@@ -1,0 +1,65 @@
+/**
+ * Author : Ruturaj Patil
+ * This class extends class Key. It sounds complicated but it is actually nothing but
+ * class Key with value=key1,key2,...keyN. TreeSet KeyList is just for maintaining a sorted
+ * list of UNIQUE keys. Also no. of keys is less than Smax
+ */
+package query_Initiator;
+import java.util.*;
+class KeyGroup extends Key
+{
+	public TreeSet KeyList=new TreeSet();
+	public int size;
+	KeyGroup()
+	{
+		
+	}
+	KeyGroup(Key x)
+	{
+		if((KeyList.contains(x.getValue())==false))
+		{
+			
+			KeyList.add(x.getValue());
+			value+=","+x.getValue();
+			size=1;
+		}
+	}
+	//Copy Constructor
+	KeyGroup(KeyGroup k)
+	{
+		super();
+		this.KeyList=k.KeyList;
+		this.size=k.size;
+	}
+	KeyGroup(Key[] list, int from, int to,int Smax) //constructor to create KeyGroup from list of keys List
+	{
+		super();
+		KeyList=new TreeSet();
+		for(int i=from;i<to;i++)
+		{
+			if((KeyList.contains(list[i].getValue())==false)&&KeyList.size()< Smax)
+			{
+				KeyList.add(list[i].getValue());
+				value+=","+list[i].getValue();
+			}
+			
+		}		
+		size=KeyList.size();
+		
+	} 
+	public int addKey(Key x,int Smax)
+	{
+		if(KeyList.contains(x.getValue())==false)
+			{
+				KeyList.add(x);
+				value+=","+x.getValue();
+				size++;
+			}
+		else if(Smax==size)
+			return 2;	//Smax reached
+		else
+			return 1;	//Key already present
+		return 0;		//Key added
+	}
+	
+}
