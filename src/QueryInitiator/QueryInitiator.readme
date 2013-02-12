@@ -1,4 +1,6 @@
 This branch is created for developing Query Initiator servlet.
+*Note : There is unresolved error when the individual .java files are compiled and executed outside eclipse
+	despite package name updation. Use eclipse*
 Feb 9:
 Step 1:
 Create a java app with following properties:
