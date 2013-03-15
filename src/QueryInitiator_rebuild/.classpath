@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
+	<classpathentry kind="lib" path="/media/Data/BE Project/voldemort-0.96/dist/voldemort-0.96.jar"/>
+	<classpathentry kind="lib" path="/media/Data/BE Project/voldemort-0.96/dist/voldemort-0.96-src.jar"/>
+	<classpathentry kind="lib" path="/media/Data/BE Project/voldemort-0.96/dist/voldemort-contrib-0.96.jar"/>
+	<classpathentry kind="lib" path="/media/Data/BE Project/voldemort-0.96/dist/voldemort-test-0.96.jar"/>
+	<classpathentry kind="lib" path="/media/Data/BE Project/voldemort-0.96/lib/avro-1.4.0.jar"/>
+	<classpathentry kind="lib" path="/media/Data/BE Project/voldemort-0.96/lib/catalina-ant.jar"/>
+	<classpathentry kind="lib" path="/media/Data/BE Project/voldemort-0.96/lib/colt-1.2.0.jar"/>
+	<classpathentry kind="lib" path="/media/Data/BE Project/voldemort-0.96/lib/commons-codec-1.3.jar"/>
+	<classpathentry kind="lib" path="/media/Data/BE Project/voldemort-0.96/lib/commons-collections-3.2.1.jar"/>
+	<classpathentry kind="lib" path="/media/Data/BE Project/voldemort-0.96/lib/commons-dbcp-1.2.2.jar"/>
+	<classpathentry kind="lib" path="/media/Data/BE Project/voldemort-0.96/lib/commons-io-1.4.jar"/>
+	<classpathentry kind="lib" path="/media/Data/BE Project/voldemort-0.96/lib/commons-lang-2.4.jar"/>
+	<classpathentry kind="lib" path="/media/Data/BE Project/voldemort-0.96/lib/commons-logging-1.1.1.jar"/>
+	<classpathentry kind="lib" path="/media/Data/BE Project/voldemort-0.96/lib/commons-pool-1.5.2.jar"/>
+	<classpathentry kind="lib" path="/media/Data/BE Project/voldemort-0.96/lib/compress-lzf-0.9.1.jar"/>
+	<classpathentry kind="lib" path="/media/Data/BE Project/voldemort-0.96/lib/google-collect-1.0.jar"/>
+	<classpathentry kind="lib" path="/media/Data/BE Project/voldemort-0.96/lib/httpclient-4.1.2.jar"/>
+	<classpathentry kind="lib" path="/media/Data/BE Project/voldemort-0.96/lib/httpcore-4.1.2.jar"/>
+	<classpathentry kind="lib" path="/media/Data/BE Project/voldemort-0.96/lib/jackson-core-asl-1.4.0.jar"/>
+	<classpathentry kind="lib" path="/media/Data/BE Project/voldemort-0.96/lib/jackson-mapper-asl-1.4.0.jar"/>
+	<classpathentry kind="lib" path="/media/Data/BE Project/voldemort-0.96/lib/jdom-1.1.jar"/>
+	<classpathentry kind="lib" path="/media/Data/BE Project/voldemort-0.96/lib/je-4.0.92.jar"/>
+	<classpathentry kind="lib" path="/media/Data/BE Project/voldemort-0.96/lib/jetty-6.1.18.jar"/>
+	<classpathentry kind="lib" path="/media/Data/BE Project/voldemort-0.96/lib/jetty-util-6.1.18.jar"/>
+	<classpathentry kind="lib" path="/media/Data/BE Project/voldemort-0.96/lib/jline-0.9.94.jar"/>
+	<classpathentry kind="lib" path="/media/Data/BE Project/voldemort-0.96/lib/jna.jar"/>
+	<classpathentry kind="lib" path="/media/Data/BE Project/voldemort-0.96/lib/jopt-simple-3.1.jar"/>
+	<classpathentry kind="lib" path="/media/Data/BE Project/voldemort-0.96/lib/junit-4.6.jar"/>
+	<classpathentry kind="lib" path="/media/Data/BE Project/voldemort-0.96/lib/libthrift-0.5.0.jar"/>
+	<classpathentry kind="lib" path="/media/Data/BE Project/voldemort-0.96/lib/log4j-1.2.15.jar"/>
+	<classpathentry kind="lib" path="/media/Data/BE Project/voldemort-0.96/lib/mockito-all-1.8.5.jar"/>
+	<classpathentry kind="lib" path="/media/Data/BE Project/voldemort-0.96/lib/paranamer-2.1.jar"/>
+	<classpathentry kind="lib" path="/media/Data/BE Project/voldemort-0.96/lib/protobuf-java-2.3.0.jar"/>
+	<classpathentry kind="lib" path="/media/Data/BE Project/voldemort-0.96/lib/slf4j-api-1.5.6.jar"/>
+	<classpathentry kind="lib" path="/media/Data/BE Project/voldemort-0.96/lib/slf4j-log4j12-1.5.6.jar"/>
+	<classpathentry kind="lib" path="/media/Data/BE Project/voldemort-0.96/lib/snappy-0.2.jar"/>
+	<classpathentry kind="lib" path="/media/Data/BE Project/voldemort-0.96/lib/velocity-1.6.2.jar"/>
+	<classpathentry kind="lib" path="/media/Data/BE Project/voldemort-0.96/lib/xercesImpl-2.9.1.jar"/>
+	<classpathentry kind="lib" path="/usr/share/tomcat7/lib/servlet-api.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
