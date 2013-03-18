@@ -6,26 +6,7 @@
  */
 package query_Initiator;
 import java.util.*;
-import java.io.*;
-import voldemort.client.ClientConfig;
-import voldemort.client.SocketStoreClientFactory;
-import voldemort.client.StoreClient;
-import voldemort.client.StoreClientFactory;
-import voldemort.versioning.Versioned;
-import voldemort.client.protocol.RequestFormatType;
-import voldemort.store.bdb.BdbStorageConfiguration;
-import voldemort.store.memory.CacheStorageConfiguration;
-import voldemort.store.memory.InMemoryStorageConfiguration;
-import voldemort.store.mysql.MysqlStorageConfiguration;
-import voldemort.store.readonly.ReadOnlyStorageConfiguration;
-import voldemort.utils.ConfigurationException;
-import voldemort.utils.Props;
-import voldemort.utils.Time;
-import voldemort.utils.UndefinedPropertyException;
-import voldemort.utils.Utils;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.Serializable;
+
 
 
 public class KeyCombinator 
@@ -46,8 +27,9 @@ public class KeyCombinator
 		System.out.println("Generating combinations...");
 		System.out.println("#Words:"+KeyStrings.length);
 		Nkeys=KeyStrings.length;		//.......................Update Nkeys
-		for(int i=0;i<Nkeys;i++)
-			KeyStrings[i]=KeyStrings[i].toLowerCase();//.........Convert each key to lower case
+		
+		/*for(int i=0;i<Nkeys;i++)
+			KeyStrings[i]=ApplyConflation(KeyStrings[i]);//.........Apply conflation*/
 		Arrays.sort(KeyStrings);
 		//Generate Key Objects
 		Key t;
@@ -62,6 +44,7 @@ public class KeyCombinator
 		
 		
 	}
+	
 	public Vector<KeyGroup> combinator(int Smax)
 	{
 		
