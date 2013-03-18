@@ -19,15 +19,10 @@ import org.json.JSONException;
 
 
 import org.json.JSONObject;
-import voldemort.serialization.*;
+
 
 import voldemort.utils.ByteArray;
 import java.util.concurrent.TimeUnit;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.PrintWriter;
 
 
 import voldemort.client.protocol.admin.*;
@@ -98,7 +93,7 @@ public class GatewayBuilder
 		GatewayBuilder gb=new GatewayBuilder();
 		int totalURLs=gb.getTitles();
 		//conflate title
-		//gb.TitleConflation();
+		gb.conflateTitles();
 		// insert title and URLs into store
 		gb.insertRows();
 			
@@ -110,14 +105,9 @@ public class GatewayBuilder
 		for(int i=0;i<URLset.size();i++)
 		{
 			URL current=URLset.elementAt(i);
-			Conflation c=new Conflation();
-			current.title=new String(c.applyConflation(current.title));
-			
-			URLset.remove(i); URLset.add(i,current);//replace conflated title
-			
 			KeyCombinator KC=new KeyCombinator(current.title);
 			Vector<KeyGroup> KeyGroupList=KC.combinator(3);//Actually Smax needs to be fetched Test.getSmax()
-			updateStore(KeyGroupList,current);//
+			updateStore(KeyGroupList,current);
 		}
 	}
 	int getTitles()
@@ -129,7 +119,7 @@ public class GatewayBuilder
         StoreClient<String, String> client = factory.getStoreClient("test");
         */
         String value,title=new String();
-        
+        int from,to;
         for(int i=0;i<URLkeys.size();i++)
         {
         	value=client.getValue(URLkeys.elementAt(i));
@@ -163,9 +153,9 @@ public class GatewayBuilder
         }
 		return URLset.size();
 	}
-	/*public void TitleConflation()
+	public void conflateTitles()
 	{
-		
+		WordConflation w=new WordConflation();
 		for(int i=0;i<URLset.size();i++)//gb.URLset.size()
 		{
 			URL current=URLset.elementAt(i);
@@ -178,7 +168,7 @@ public class GatewayBuilder
 			{
 				
 				//System.out.println("\nBefore: "+words[j]);
-				words[j]=KeyCombinator.ApplyConflation(words[j]);
+				words[j]=w.stripAffixes(words[j]);
 				//System.out.println("After: "+words[j]);
 				if(words[j].isEmpty()==false)
 					if(j==0)
@@ -190,16 +180,11 @@ public class GatewayBuilder
 			URLset.remove(i);// replace with conflated title
 			URLset.add(i,current);
 		}
-	}*/
+	}
 	public  void updateStore(Vector<KeyGroup> KGList,URL current)// overloaded method that checks if KG is present	
 	{
-		PrintWriter f=null;
-        try {
-			f=new PrintWriter("op.txt");
-		} catch (FileNotFoundException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
+		
+        
         String value;
         for(int i=0;i<KGList.size();i++)
         {
@@ -207,19 +192,15 @@ public class GatewayBuilder
 			value=client.getValue(KG.getTagList(),"URL");//temp default value= URLi
 			if(value!="URL")														// These are NOT present in DB
         	 {
-				//System.out.println(value);
+				System.out.println(value);
 				String setofURL=new String();
 				
 				try 
 				{
 					JSONObject js=new JSONObject(value);
 					setofURL = js.getString("setofURL");
-					/*System.out.println("original:"+setofURL);
-					
-					ObjectSerializer<HashSet> obj=new ObjectSerializer<>();
-					HashSet<String> temp=obj.toObject(setofURL.getBytes());
-					setofURL=new String(temp.toString());*/
-				}
+					//System.out.println("Aadhi:"+setofURL);
+				} 
 				catch (JSONException e) 
 				{
 					// TODO Auto-generated catch block
@@ -229,17 +210,13 @@ public class GatewayBuilder
 				kv.addURL(current.URL);
 				try 
 				{
-					//ObjectSerializer<HashSet> obj=new ObjectSerializer<>();
-					
 					JSONObject js=new JSONObject(value);
 					js.put("setofURL", kv.URLlist.toString());
-					//js.put("setofURL", new String(obj.toBytes(kv.URLlist)));
 					js.put("URLCount", kv.URLCount);
 					js.put("popularity", kv.PopularityValue);
 					js.put("suspended", kv.KG.suspended);
 					value=new String(js.toString());
 					System.out.println("for title: "+current.title+" Updated to :"+value);
-					f.write("for title: "+current.title+" Updated to :"+value);
 		   	 	}
 				catch(JSONException e)
 				{
@@ -255,15 +232,12 @@ public class GatewayBuilder
 				JSONObject js=new JSONObject();
 				KVPair kv=new KVPair(KG,current.URL);
 				try {
-					//ObjectSerializer<HashSet> obj=new ObjectSerializer<>();
 					js.put("setofURL", kv.URLlist.toString());
-					//js.put("setofURL", new String(obj.toBytes(kv.URLlist)));
 					js.put("URLCount", kv.URLCount);
 					js.put("popularity", kv.PopularityValue);
 					js.put("suspended", kv.KG.suspended);
 					value=new String(js.toString());
 					System.out.println("Put new :"+value);
-					f.write("Put new :"+value);
 				} catch (JSONException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -279,7 +253,7 @@ public class GatewayBuilder
 			
         }
         
-       f.close();
+       
 	}
 	/*
 	
@@ -296,6 +270,5 @@ public class GatewayBuilder
 	}
 	*/
 }
-
 
 
