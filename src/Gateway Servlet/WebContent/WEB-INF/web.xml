@@ -9,14 +9,12 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
-  <servlet>
-    <description></description>
-    <display-name>gw</display-name>
-    <servlet-name>gw</servlet-name>
-    <servlet-class>query_Initiator.Test</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>gw</servlet-name>
-    <url-pattern>/gw</url-pattern>
-  </servlet-mapping>
+ <servlet>
+<servlet-name>Test</servlet-name>
+<servlet-class>mainServlet.Test</servlet-class>
+</servlet>
+<servlet-mapping>
+<servlet-name>index.jsp</servlet-name>
+<url-pattern>/Test</url-pattern>
+</servlet-mapping>
 </web-app>
